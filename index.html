@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Eine Einladung zum Dinner</title>
+<title>E Iladig zum Dinner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -199,45 +199,45 @@
 <main class="stage">
 
   <section id="intro">
-    <p class="kicker">Für dich ist Post angekommen</p>
-    <button class="seal" id="seal" type="button" aria-label="Einladung öffnen">♥</button>
+    <p class="kicker">Für dich isch Poscht acho</p>
+    <button class="seal" id="seal" type="button" aria-label="Iladig ufmache">♥</button>
   </section>
 
   <article id="card">
-    <p class="greet" id="greet">Hallo du</p>
-    <h1>Ein Abend für zwei</h1>
-    <p class="lead">Ein Abend, um uns neu kennenzulernen.</p>
+    <p class="greet" id="greet">Hoi du</p>
+    <h1>Än Abig für zwöi</h1>
+    <p class="lead">Än Abig, zum üs neu z’kenneleere.</p>
 
     <dl class="details">
       <div>
-        <dt>Wann? Such dir einen Tag aus</dt>
-        <dd><input class="dateinput" type="date" id="datum" aria-label="Wunschtag auswählen"></dd>
+        <dt>Wänn? Suech der en Tag uus</dt>
+        <dd><input class="dateinput" type="date" id="datum" aria-label="Wunschtag uswähle"></dd>
       </div>
-      <div><dt>Um wie viel Uhr</dt><dd id="d-zeit"></dd></div>
+      <div><dt>Um wivill Uhr</dt><dd id="d-zeit"></dd></div>
       <div><dt>Wo</dt><dd id="d-ort"></dd></div>
     </dl>
     <p class="hintline" id="hint" role="alert"></p>
 
     <div id="question">
-      <p class="ask">Kommst du mit?</p>
+      <p class="ask">Chunsch mit?</p>
       <div class="answers" id="answers">
-        <button class="btn yes" id="yes" type="button">Ja, sehr gern</button>
-        <button class="btn later" id="later" type="button">Später</button>
-        <button class="btn no" id="no" type="button">Nein</button>
+        <button class="btn yes" id="yes" type="button">Ja, sehr gärn</button>
+        <button class="btn later" id="later" type="button">Spöter</button>
+        <button class="btn no" id="no" type="button">Nei</button>
       </div>
     </div>
 
     <div class="panel" id="reply" role="status">
-      <p class="big">Wundervoll!</p>
+      <p class="big">Wunderbar!</p>
       <p class="when" id="when"></p>
-      <p>Ich freue mich riesig auf dich. Zieh dir etwas Schönes an und bring Hunger mit.</p>
+      <p>Ich fröi mi mega uf dich. Zieh der öppis Schöns a und bring Hunger mit.</p>
       <p class="sign" id="sign"></p>
     </div>
 
     <div class="panel" id="laterpanel" role="status">
-      <p class="big">Alles gut.</p>
-      <p>Lass dir Zeit, die Einladung läuft nicht weg. Sag mir einfach Bescheid, wenn du so weit bist.</p>
-      <button class="btn yes" id="back" type="button">Doch jetzt zusagen</button>
+      <p class="big">Alles guet.</p>
+      <p>Gib der Ziit, d’Iladig louft der nöd devo. Sag mer eifach Bscheid, wänn du so wiit bisch.</p>
+      <button class="btn yes" id="back" type="button">Doch jetz zuesäge</button>
     </div>
   </article>
 
@@ -252,7 +252,7 @@ const CFG = {
   name: "",                  // z. B. "Anna" (leer = „Hallo du“)
   absender: "",              // z. B. "Dein Mathias" (leer = keine Unterschrift)
   zeit: "18:00 Uhr",
-  ort: "Das bleibt noch eine Überraschung",
+  ort: "Das blibt na en Überraschig",
 
   // Aufruf-Zähler (Supabase). Leer lassen = kein Tracking.
   supabaseUrl: "https://uwhtrabmyokfeodjtvsc.supabase.co",           // z. B. "https://abcdxyz.supabase.co"
@@ -264,7 +264,7 @@ const $ = (id) => document.getElementById(id);
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const TRACK = !!(CFG.supabaseUrl && CFG.supabaseKey);
 
-$("greet").textContent = CFG.name ? "Liebe " + CFG.name : "Hallo du";
+$("greet").textContent = CFG.name ? "Liebi " + CFG.name : "Hoi du";
 $("d-zeit").textContent = CFG.zeit;
 $("d-ort").textContent = CFG.ort;
 $("sign").textContent = CFG.absender;
@@ -384,7 +384,7 @@ $("seal").addEventListener("click", () => {
 
 /* ---------- ausweichender Nein-Button ---------- */
 const yes = $("yes"), no = $("no");
-const noTexts = ["Nein", "Wirklich?", "Sicher?", "Überleg’s dir noch mal", "Bitte bitte", "Ich hab Hunger auf dich", "Na gut … nein geht nicht"];
+const noTexts = ["Nei", "Würkli?", "Sicher?", "Überleg’s der na mal", "Bitte bitte", "Ich han Hunger uf dich", "Na guet … nei gaht nöd"];
 let tries = 0, lastDodge = 0;
 
 function overlaps(a, b, pad) {
@@ -492,7 +492,10 @@ function tick() {
 /* ---------- Datum ---------- */
 function formatDate(iso) {
   const [y, m, d] = iso.split("-").map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString("de-CH", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const tage = ["Sunntig", "Mäntig", "Ziischtig", "Mittwuch", "Donschtig", "Friitig", "Samschtig"];
+  const monet = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "Auguscht", "September", "Oktober", "November", "Dezember"];
+  const dt = new Date(y, m - 1, d);
+  return tage[dt.getDay()] + ", " + d + ". " + monet[m - 1] + " " + y;
 }
 
 $("datum").addEventListener("input", () => { $("hint").textContent = ""; });
@@ -502,7 +505,7 @@ yes.addEventListener("click", () => {
   const iso = $("datum").value;
   if (!iso) {
     const f = $("datum");
-    $("hint").textContent = "Such dir zuerst einen Tag aus, an dem du Zeit hast.";
+    $("hint").textContent = "Suech der zerscht en Tag uus, a däm du Ziit häsch.";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
     f.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
     f.focus({ preventScroll: true });
@@ -511,7 +514,7 @@ yes.addEventListener("click", () => {
   track("yes", iso);
   $("datum").disabled = true;
   $("hint").textContent = "";
-  $("when").textContent = "Wir sehen uns am " + formatDate(iso) + " um " + CFG.zeit + ".";
+  $("when").textContent = "Mir gsehnd üs am " + formatDate(iso) + " um " + CFG.zeit + ".";
 
   const r = yes.getBoundingClientRect();
   const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
