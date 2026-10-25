@@ -505,7 +505,7 @@ yes.addEventListener("click", () => {
   const iso = $("datum").value;
   if (!iso) {
     const f = $("datum");
-    $("hint").textContent = "Suech der zerscht en Tag us, a däm du Ziit häsch.";
+    $("hint").textContent = "Suech der zerscht no en Tag us.";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
     f.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
     f.focus({ preventScroll: true });
