@@ -210,7 +210,7 @@
 
     <dl class="details">
       <div>
-        <dt>Wänn? Suech der en Tag us</dt>
+        <dt>Wänn? Suech der en Friitig oder Samschtig us</dt>
         <dd><input class="dateinput" type="date" id="datum" aria-label="Wunschtag uswähle"></dd>
       </div>
       <div><dt>Um wivill Uhr</dt><dd id="d-zeit"></dd></div>
@@ -498,7 +498,24 @@ function formatDate(iso) {
   return tage[dt.getDay()] + ", " + d + ". " + monet[m - 1] + " " + y;
 }
 
-$("datum").addEventListener("input", () => { $("hint").textContent = ""; });
+function istFriOderSa(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const w = new Date(y, m - 1, d).getDay();
+  return w === 5 || w === 6;
+}
+
+function pruefeDatum() {
+  const f = $("datum");
+  if (f.value && !istFriOderSa(f.value)) {
+    f.value = "";
+    $("hint").textContent = "Das gaht nume am Friitig oder Samschtig.";
+    f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
+  } else {
+    $("hint").textContent = "";
+  }
+}
+$("datum").addEventListener("input", pruefeDatum);
+$("datum").addEventListener("change", pruefeDatum);
 
 /* ---------- Zusage ---------- */
 yes.addEventListener("click", () => {
@@ -511,6 +528,7 @@ yes.addEventListener("click", () => {
     f.focus({ preventScroll: true });
     return;
   }
+  if (!istFriOderSa(iso)) { pruefeDatum(); return; }
   track("yes", iso);
   $("datum").disabled = true;
   $("hint").textContent = "";
