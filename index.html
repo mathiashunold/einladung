@@ -241,7 +241,6 @@
     </div>
   </article>
 
-  <p class="privacy" id="privacy" hidden>Damit ich weiß, dass meine Einladung angekommen ist, wird dein Besuch gezählt: Gerät und ungefährer Ort, keine IP-Adresse.</p>
 
 </main>
 
@@ -269,7 +268,6 @@ $("greet").textContent = CFG.name ? "Liebe " + CFG.name : "Hallo du";
 $("d-zeit").textContent = CFG.zeit;
 $("d-ort").textContent = CFG.ort;
 $("sign").textContent = CFG.absender;
-$("privacy").hidden = !TRACK;
 
 /* frühestens heute */
 (function () {
