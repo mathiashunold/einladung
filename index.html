@@ -210,7 +210,7 @@
 
     <dl class="details">
       <div>
-        <dt>Wänn? Suech der en Tag uus</dt>
+        <dt>Wänn? Suech der en Tag us</dt>
         <dd><input class="dateinput" type="date" id="datum" aria-label="Wunschtag uswähle"></dd>
       </div>
       <div><dt>Um wivill Uhr</dt><dd id="d-zeit"></dd></div>
@@ -505,7 +505,7 @@ yes.addEventListener("click", () => {
   const iso = $("datum").value;
   if (!iso) {
     const f = $("datum");
-    $("hint").textContent = "Suech der zerscht en Tag uus, a däm du Ziit häsch.";
+    $("hint").textContent = "Suech der zerscht en Tag us, a däm du Ziit häsch.";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
     f.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
     f.focus({ preventScroll: true });
