@@ -513,7 +513,7 @@ function istFriOderSa(iso) {
 function pruefeDatum() {
   const f = $("datum");
   if (f.value && !datumOk(f.value)) {
-    $("hint").textContent = GESPERRT.includes(f.value) ? "Dä Tag isch leider nöd frei." : "Das gaht nume am Fritig oder Samstig.";
+    $("hint").textContent = GESPERRT.includes(f.value) ? "De Tag iisch leider scho bsetzt." : "Das gaht nume am Fritig oder Samstig.";
     f.value = "";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
   } else {
