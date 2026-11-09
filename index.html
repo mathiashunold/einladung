@@ -498,7 +498,7 @@ function formatDate(iso) {
   return tage[dt.getDay()] + " " + d + ". " + monet[m - 1] + " " + y;
 }
 
-const GESPERRT = ["2026-11-21"];  // nicht verfügbare Tage (JJJJ-MM-TT)
+const GESPERRT = ["2026-11-20"];  // nicht verfügbare Tage (JJJJ-MM-TT)
 
 function datumOk(iso) {
   return istFriOderSa(iso) && !GESPERRT.includes(iso);
