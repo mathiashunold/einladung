@@ -210,7 +210,7 @@
 
     <dl class="details">
       <div>
-        <dt>Wänn? Suech der en Fritig oder Samschtig us</dt>
+        <dt>Wänn? Suech der en Fritig oder Samstig us</dt>
         <dd><input class="dateinput" type="date" id="datum" aria-label="Wunschtag uswähle"></dd>
       </div>
       <div><dt>Um wivill Uhr</dt><dd id="d-zeit"></dd></div>
@@ -492,7 +492,7 @@ function tick() {
 /* ---------- Datum ---------- */
 function formatDate(iso) {
   const [y, m, d] = iso.split("-").map(Number);
-  const tage = ["Sunntig", "Mäntig", "Ziischtig", "Mittwuch", "Donschtig", "Fritig", "Samschtig"];
+  const tage = ["Sunntig", "Mäntig", "Ziischtig", "Mittwuch", "Donschtig", "Fritig", "Samstig"];
   const monet = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "Auguscht", "September", "Oktober", "November", "Dezember"];
   const dt = new Date(y, m - 1, d);
   return tage[dt.getDay()] + " " + d + ". " + monet[m - 1] + " " + y;
@@ -508,7 +508,7 @@ function pruefeDatum() {
   const f = $("datum");
   if (f.value && !istFriOderSa(f.value)) {
     f.value = "";
-    $("hint").textContent = "Das gaht nume am Fritig oder Samschtig.";
+    $("hint").textContent = "Das gaht nume am Fritig oder Samstig.";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
   } else {
     $("hint").textContent = "";
