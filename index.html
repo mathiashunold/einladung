@@ -210,7 +210,7 @@
 
     <dl class="details">
       <div>
-        <dt>Wänn? Suech der en Friitig oder Samschtig us</dt>
+        <dt>Wänn? Suech der en Fritig oder Samschtig us</dt>
         <dd><input class="dateinput" type="date" id="datum" aria-label="Wunschtag uswähle"></dd>
       </div>
       <div><dt>Um wivill Uhr</dt><dd id="d-zeit"></dd></div>
@@ -230,7 +230,7 @@
     <div class="panel" id="reply" role="status">
       <p class="big">Wunderbar!</p>
       <p class="when" id="when"></p>
-      <p>Ich fröi mi mega uf dich. Zieh der öppis Schöns a und bring Hunger mit.</p>
+      <p>Ich freu mich uf dich.</p>
       <p class="sign" id="sign"></p>
     </div>
 
@@ -492,10 +492,10 @@ function tick() {
 /* ---------- Datum ---------- */
 function formatDate(iso) {
   const [y, m, d] = iso.split("-").map(Number);
-  const tage = ["Sunntig", "Mäntig", "Ziischtig", "Mittwuch", "Donschtig", "Friitig", "Samschtig"];
+  const tage = ["Sunntig", "Mäntig", "Ziischtig", "Mittwuch", "Donschtig", "Fritig", "Samschtig"];
   const monet = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "Auguscht", "September", "Oktober", "November", "Dezember"];
   const dt = new Date(y, m - 1, d);
-  return tage[dt.getDay()] + ", " + d + ". " + monet[m - 1] + " " + y;
+  return tage[dt.getDay()] + " " + d + ". " + monet[m - 1] + " " + y;
 }
 
 function istFriOderSa(iso) {
@@ -508,7 +508,7 @@ function pruefeDatum() {
   const f = $("datum");
   if (f.value && !istFriOderSa(f.value)) {
     f.value = "";
-    $("hint").textContent = "Das gaht nume am Friitig oder Samschtig.";
+    $("hint").textContent = "Das gaht nume am Fritig oder Samschtig.";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
   } else {
     $("hint").textContent = "";
@@ -532,7 +532,7 @@ yes.addEventListener("click", () => {
   track("yes", iso);
   $("datum").disabled = true;
   $("hint").textContent = "";
-  $("when").textContent = "Mir gsehnd üs am " + formatDate(iso) + " um " + CFG.zeit + ".";
+  $("when").textContent = "Mir gsehnd eus am " + formatDate(iso) + " um " + CFG.zeit + ".";
 
   const r = yes.getBoundingClientRect();
   const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
