@@ -498,6 +498,12 @@ function formatDate(iso) {
   return tage[dt.getDay()] + " " + d + ". " + monet[m - 1] + " " + y;
 }
 
+const GESPERRT = ["2026-11-21"];  // nicht verfügbare Tage (JJJJ-MM-TT)
+
+function datumOk(iso) {
+  return istFriOderSa(iso) && !GESPERRT.includes(iso);
+}
+
 function istFriOderSa(iso) {
   const [y, m, d] = iso.split("-").map(Number);
   const w = new Date(y, m - 1, d).getDay();
@@ -506,9 +512,9 @@ function istFriOderSa(iso) {
 
 function pruefeDatum() {
   const f = $("datum");
-  if (f.value && !istFriOderSa(f.value)) {
+  if (f.value && !datumOk(f.value)) {
+    $("hint").textContent = GESPERRT.includes(f.value) ? "Dä Tag isch leider nöd frei." : "Das gaht nume am Fritig oder Samstig.";
     f.value = "";
-    $("hint").textContent = "Das gaht nume am Fritig oder Samstig.";
     f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
   } else {
     $("hint").textContent = "";
@@ -528,7 +534,7 @@ yes.addEventListener("click", () => {
     f.focus({ preventScroll: true });
     return;
   }
-  if (!istFriOderSa(iso)) { pruefeDatum(); return; }
+  if (!datumOk(iso)) { pruefeDatum(); return; }
   track("yes", iso);
   $("datum").disabled = true;
   $("hint").textContent = "";
